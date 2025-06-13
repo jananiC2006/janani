@@ -1,4 +1,4 @@
 flask==2.3.3
 gunicorn==23.0.0
-mysql-connector-python==2.2.9
+mysql-connector-python
 python-dotenv==1.0.1
