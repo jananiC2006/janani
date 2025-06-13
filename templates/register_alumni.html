@@ -1,0 +1,38 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register Alumni</title>
+  <link rel="stylesheet" href="/static/register.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🎓 Alumni Portal</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Register Alumni</a></li>
+      <li><a href="/alumni">Alumni List</a></li>
+      <li><a href="/admin_alumni">Admin</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Register as an Alumni</h1>
+    <form method="POST" action="/register_alumni" class="alumni-form">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="batch" placeholder="Batch (e.g., 2018-2021)" required />
+      <input type="text" name="department" placeholder="Department" required />
+      <input type="text" name="company" placeholder="Company" required />
+      <input type="text" name="position" placeholder="Position" required />
+      <input type="url" name="linkedin_url" placeholder="LinkedIn Profile URL" required />
+      <button type="submit" class="btn">Submit Registration</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Alumni Interaction Portal</p>
+  </footer>
+</body>
+</html>

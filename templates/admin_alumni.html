@@ -1,0 +1,104 @@
+<!-- <meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin - Verify Alumni</title>
+  <link rel="stylesheet" href="/static/admin.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🎓 Alumni Portal</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Register Alumni</a></li>
+      <li><a href="/alumni">Alumni List</a></li>
+      <li><a href="/admin_alumni">Admin</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Admin Panel: Verify Alumni</h1>
+
+    <div class="table-container">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Batch</th>
+            <th>Department</th>
+            <th>Company</th>
+            <th>Position</th>
+            <th>LinkedIn</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for alum in alumni %}
+          <tr>
+            <td>{{ alum.name }}</td>
+            <td>{{ alum.batch }}</td>
+            <td>{{ alum.department }}</td>
+            <td>{{ alum.company }}</td>
+            <td>{{ alum.position }}</td>
+            <td>
+              <a href="{{ alum.linkedin_url }}" target="_blank">🔗</a>
+            </td>
+            <td>{{ alum.status }}</td>
+            <td>
+              <form method="POST" action="/admin_alumni" class="inline-form">
+                <input type="hidden" name="alumni_id" value="{{ alum.alumni_id }}" />
+                <select name="status" required>
+                  <option value="">Select</option>
+                  <option value="Approved">Approve</option>
+                  <option value="Rejected">Reject</option>
+                </select>
+                <button type="submit" class="btn small">✔</button>
+
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div> -->
+    
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel - Alumni Approval</title>
+  <link rel="stylesheet" href="/static/admin.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🎓 Alumni Portal</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Register Alumni</a></li>
+      <li><a href="/alumni">Alumni List</a></li>
+      
+      <li><a href="/admin_alumni">Admin</a></li>
+    </ul>
+  </nav>
+  <h1>Admin - Approve or Reject Alumni</h1>
+  {% for alum in alumni %}
+    <div style="border: 1px solid black; padding: 10px; margin: 10px;">
+      <h2>{{ alum.name }}</h2>
+      <p>Email: {{ alum.email }}</p>
+      <p>Batch: {{ alum.batch }}</p>
+      <p>Department: {{ alum.department }}</p>
+      <p>Status: <strong>{{ alum.status }}</strong></p>
+      <form method="POST" action="/admin_alumni">
+        <input type="hidden" name="alumni_id" value="{{ alum.alumni_id }}">
+        <select name="status">
+          <option value="Approved">Approve</option>
+          <option value="Rejected">Reject</option>
+        </select>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  {% endfor %}
+</body>
+</html>
+

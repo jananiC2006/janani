@@ -1,0 +1,90 @@
+<!-- <meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alumni List</title>
+  <link rel="stylesheet" href="/static/list.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🎓 Alumni Portal</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Register Alumni</a></li>
+      <li><a href="/alumni">Alumni List</a></li>
+      <li><a href="/admin_alumni">Admin</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Approved Alumni</h1>
+    <div class="alumni-grid">
+      {% for alum in alumni %}
+      <div class="alumni-card">
+        <h2>{{ alum.name }}</h2>
+        <p><strong>Batch:</strong> {{ alum.batch }}</p>
+        <p><strong>Department:</strong> {{ alum.department }}</p>
+        <p><strong>Company:</strong> {{ alum.company }}</p>
+        <p><strong>Position:</strong> {{ alum.position }}</p>
+        <p>
+          <a href="{{ alum.linkedin_url }}" target="_blank">
+            🔗 LinkedIn
+          </a>
+        </p>
+       
+      </div>
+      
+      </div>
+      {% else %}
+      <p>alumni approved yet.</p>
+      {% endfor %}
+    </div>
+    
+    </form>
+     
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Alumni Interaction Portal</p>
+  </footer>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alumni List</title>
+  <link rel="stylesheet" href="/static/list.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🎓 Alumni Portal</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/register">Register Alumni</a></li>
+      <li><a href="/alumni">Alumni List</a></li>
+      <li><a href="/admin_login">login</a></li>
+      <li><a href="/admin_alumni">Admin</a></li>
+    
+    </ul>
+  </nav>
+  <h1>Approved Alumni</h1>
+  {% if alumni %}
+    {% for alum in alumni %}
+      <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <h2>{{ alum[1] }}</h2> <!-- Name -->
+        <p><strong>Batch:</strong> {{ alum[3] }}</p>
+        <p><strong>Department:</strong> {{ alum[4] }}</p>
+        <p><strong>Company:</strong> {{ alum[5] }}</p>
+        <p><strong>Position:</strong> {{ alum[6] }}</p>
+        <p><strong>Status:</strong> {{ alum[8] }}</p> <!-- Status added here -->
+        <p><a href="{{ alum[7] }}" target="_blank">🔗 LinkedIn</a></p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No alumni approved yet.</p>
+  {% endif %}
+</body>
+</html>
+
+
